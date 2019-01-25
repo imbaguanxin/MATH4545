@@ -65,6 +65,34 @@
 		a_n = \frac{2}{L}\int_{0}^{L}F(x)cos(\frac{n\pi x}{L})dx$\\
 		F.C.S $\rightarrow$ even extension, F.S.S $\rightarrow$ odd extension
 	\end{enumerate}
+
+	\item Sturm-Liouville Problem
+		\begin{enumerate}
+			\item Basic Examples of S-L BVP\\
+			$f'' + \lambda f = 0, 0\le x \le L$ and Boundary conditions\\
+			Def: value $\lambda$ for which the equation with the given boundary ends: has non-trival solution is called eigen value, the corresponding solution is called eigeon functions of the given S-L BVP.\\
+			First, general solutions:\\
+			$\lambda = 0, f(x) = \alpha x + \beta\\
+			\lambda > 0, f(x) = C_1 cos(\sqrt{\lambda}x) + C_2 sin(\sqrt{\lambda}x)\\
+			\lambda < 0, f(x) = C_1 cosh(ax) + C_2 sinh(ax), a^2 = -\lambda, a > 0$
+			Then, impose the boundary in each case.
+			\begin{enumerate}
+				\item Boundary COND: $f(0) = 0, f(L) = 0$\\
+				e-values: $\lambda_n = \frac{n^2\pi^2}{L^2}, n = 1,2,3$\\
+				e-functions: $f_n \sim sin(\frac{n \pi x}{L})$
+				\item Boundary COND: $f'(0) = 0, f'(L) = 0$\\
+				e-values: $\lambda_n = \frac{n^2\pi^2}{L^2}, n = 0,1,2,3$\\
+				e-functions: $f_n \sim cos(\frac{n \pi x}{L})$
+				\item Boundary COND: $f(0) = 0, f'(L) = 0$\\
+				e-values: $\lambda_n = (\frac{(2n-1)\pi}{2L})^2, n = 1,2,3$\\
+				e-functions: $f_n \sim sin(\frac{(2n-1)\pi}{2L}x)$
+				\item Boundary COND: $f'(0) = 0, f(L) = 0$\\
+				e-values: $\lambda_n = (\frac{(2n-1)\pi}{2L})^2, n = 1,2,3$\\
+				e-functions: $f_n \sim cos(\frac{(2n-1)\pi}{2L}x)$
+			\end{enumerate}
+			\item Regular S-L Problems
+			
+		\end{enumerate}
 	
 \end{enumerate}
 \newpage
