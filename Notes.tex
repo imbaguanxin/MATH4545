@@ -1,0 +1,72 @@
+\documentclass[10pt]{article}  
+\usepackage{graphicx}
+\usepackage{geometry}   %设置页边距的宏包
+
+\usepackage{algpseudocode}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{verbatim}
+\usepackage{microtype}
+\usepackage{kpfonts}
+\usepackage{multicol}
+\usepackage{amsfonts}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\Ib}{\mathbf{I}}
+\newcommand{\Pb}{\mathbf{P}}
+\newcommand{\Qb}{\mathbf{Q}}
+\newcommand{\Rb}{\mathbf{R}}
+\newcommand{\Nb}{\mathbf{N}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\Zplus}{\mathbf{Z}^+}
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1.5cm}  %设置 上、左、下、右 页边距
+
+\begin{document}  
+\begin{multicols}{2}
+	
+\begin{enumerate}
+	\item Basic ODEs
+	\begin{enumerate}
+		\item seperatable: $y'= \frac{F(x)}{G(y)}$\\
+		$\Rightarrow \frac{dy}{dx} = \frac{F(x)}{G(y)} \Rightarrow \int G(y)dy = \int F(x)dx$
+		
+		\item Linear: $y'+p(x)y = q(x)$\\
+		Integrating Factor: $e^{\int p(x)dx}$\\
+		$\Rightarrow (e^{\int p(x)dx}y)' = e^{\int p(x)dx}q(x)\\ \Rightarrow
+		e^{\int p(x)dx}y = \int e^{\int p(x)dx}q(x)dx$
+		
+		\item $ay'' + by' + cy = 0$ (constant coefficient)\\
+		characteristc EQ: $ar^2 + br + c = 0$\\
+		$\Delta > 0, y = C_1e^{r_1x} + C_2e^{r_2x}\\
+		\Delta = 0, y = C_1e^{rx} + C_2xe^{rx}\\
+		\Delta > 0, r = p \pm qi: y = e^{ax}[c_1cos(bx)+c_2sin(bx)]\\$ 
+	\end{enumerate}
+
+	\item Fourier Series\\
+	Given $F(x), x\in [-L,L]$ write $F(x)$ in a series:
+	$$F(x) = \frac{a_0}{2} + \sum_{n = 1}^{\infty}a_n cos(\frac{n\pi x}{L}) + \sum_{n = 1}^{\infty}b_n sin(\frac{n\pi x}{L})$$ where $a_n, b_n$ are constants.
+	\begin{enumerate}
+		\item  Orthogonality Relations\\
+		$\int_{-L}^{L}sin(\frac{n\pi x}{L})cos(\frac{m\pi x}{L}) = 0\\
+		\int_{-L}^{L}cos(\frac{n\pi x}{L})cos(\frac{m\pi x}{L}) = 0(m \neq n), L(m = n)\\
+		\int_{-L}^{L}sin(\frac{n\pi x}{L})sin(\frac{m\pi x}{L}) = 0(m \neq n), L(m = n)$
+		
+		\item $a_n = \frac{1}{L}\int_{-L}^{L}F(x)cos(\frac{n\pi x}{L})dx\\
+		b_n = \frac{1}{L}\int_{-L}^{L}F(x)sin(\frac{n\pi x}{L})dx, n \in [0, \infty], n \in \Z$
+		
+		\item Convergece Statement of F.S.\\
+		F.S. convergence to the "periodic extension" of F(x) whever F(x) is continous and to the average of $\frac{f(x^+)+f(x^-)}{2}$ at every point.
+		
+		\item F.S.S and F.C.S of $F(x)$ on $[0,L]$:\\
+		F.C.S = $\frac{a_0}{2} + \sum_{n=1}^{\infty}a_ncos\frac{n\pi x}{L},
+		a_n = \frac{2}{L}\int_{0}^{L}F(x)cos(\frac{n\pi x}{L})dx$\\
+		F.S.S = $\sum_{n=1}^{\infty}b_nsin\frac{n\pi x}{L},
+		a_n = \frac{2}{L}\int_{0}^{L}F(x)cos(\frac{n\pi x}{L})dx$\\
+		F.C.S $\rightarrow$ even extension, F.S.S $\rightarrow$ odd extension
+	\end{enumerate}
+	
+\end{enumerate}
+\newpage
+\end{multicols}
+\end{document}
