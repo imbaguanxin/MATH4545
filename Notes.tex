@@ -98,6 +98,27 @@
 			
 		\end{enumerate}
 	
+	\item Heat and Wave Equation
+		\begin{enumerate}
+			\item Heat Equation
+				$\mu_t = k\mu_{xx}$, $\mu(x,t) = X(x)T(t)$, usually we treat k as 1\\
+				$\rightarrow X(x)T'(t) = kX''(x)T(t)$\\
+				Let$\frac{T'}{kT} = \frac{kX''}{x} = -\lambda$\\
+				We get $X'' + \lambda x = 0$, $T' + k\lambda T = 0$\\
+				For second EQ, T ~ $e^{-k\lambda t}$\\
+				For first EQ, we apply S-L BVP problem\\
+				Usually, we can find the bound. cond. in the 4 fourier series probs.
+				e.g. bond cond 1:\\
+				$\lambda_n = (\frac{n \pi}{L})^2$, $f_n \sim sin(\frac{n \pi x}{L})$\\
+				$\mu (x,0) = g(x) = \sum_{n = 1}^{\infty}c_n sin(\frac{n\pi x}{L})$\\
+				Fouries formal solution: $\mu (x,t) = \sum_{n = 1}^{\infty}c_nsin(\frac{n \pi x}{L})e^{-\frac{n^2\pi^2}{L^2}t}$ 
+			\item Wave Equation
+				$\mu_{tt} = C^2\mu_{xx}, \mu(x,t) = X(x)T(t)$
+				
+				
+				
+	    \end{enumerate}
+	
 \end{enumerate}
 \newpage
 \end{multicols}
