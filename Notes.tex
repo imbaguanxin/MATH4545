@@ -100,21 +100,34 @@
 	
 	\item Heat and Wave Equation
 		\begin{enumerate}
-			\item Heat Equation
-				$\mu_t = k\mu_{xx}$, $\mu(x,t) = X(x)T(t)$, usually we treat k as 1\\
+			\item Heat Equation\\
+				$\mu_t = k\mu_{xx}$, $\mu(x,t) = X(x)T(t)$ (usually k = 1)\\
 				$\rightarrow X(x)T'(t) = kX''(x)T(t)$\\
 				Let$\frac{T'}{kT} = \frac{kX''}{x} = -\lambda$\\
 				We get $X'' + \lambda x = 0$, $T' + k\lambda T = 0$\\
-				For second EQ, T ~ $e^{-k\lambda t}$\\
+				For second EQ, T $\sim e^{-k\lambda t}$\\
 				For first EQ, we apply S-L BVP problem\\
-				Usually, we can find the bound. cond. in the 4 fourier series probs.
+				$\mu(x,t) = \sum_{n = 1}^{\infty}c_n f_n e^{-\lambda_n t}$\\
+				Usually, we find the bound. cond. in the 4 fourier series probs.\\
 				e.g. bond cond 1:\\
 				$\lambda_n = (\frac{n \pi}{L})^2$, $f_n \sim sin(\frac{n \pi x}{L})$\\
 				$\mu (x,0) = g(x) = \sum_{n = 1}^{\infty}c_n sin(\frac{n\pi x}{L})$\\
 				Fouries formal solution: $\mu (x,t) = \sum_{n = 1}^{\infty}c_nsin(\frac{n \pi x}{L})e^{-\frac{n^2\pi^2}{L^2}t}$ 
-			\item Wave Equation
-				$\mu_{tt} = C^2\mu_{xx}, \mu(x,t) = X(x)T(t)$
-				
+				\\ $\mathbf{note}:$ in bond cond 2, n starts from 0. calculate case 0 seperately.
+			\item Wave Equation\\
+				$\mu_{tt} = C^2\mu_{xx}, \mu(x,t) = X(x)T(t)$\\
+				$XT'' = C^2X''T$\\
+				Let $\frac{T''}{c^2T} = \frac{X''}{x} = -\lambda$\\
+				We get $X'' + \lambda x = 0$, $T'' =  -\lambda c^2T$\\
+				$\mu (x,t) = \sum_{n = 1}^{\infty}(b_{1,n}cos\frac{n\pi ct}{L} + b_{2,n}sin\frac{n\pi c t}{L})sin\frac{n\pi x}{L}$
+				\begin{enumerate}
+					\item $\mu(x,0) = f(x)$\\
+					$f(x) = \sum_{n = 1}^{\infty}b_{1,n}sin\frac{n\pi x}{L}$\\
+					$b_{1,n} = \frac{\int_{0}^{L}f(x)sin\frac{n\pi x}{L}dx}{\int_{0}^{L}sin^2\frac{n\pi x}{L}}$\\
+					\item $\mu_t(x,0) = g(x)$\\
+					$g(x) = \sum_{n = 1}^{\infty} \frac{n\pi c}{L}b_{2,n}sin\frac{n\pi x}{L}$\\
+					$\frac{n\pi c}{L}b_{2,n} = \frac{\int_{0}^{L}g(x)sin\frac{n\pi x}{L}dx}{\int_{0}^{L}sin^2\frac{n\pi x}{L}}$
+				\end{enumerate}
 				
 				
 	    \end{enumerate}
