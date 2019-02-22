@@ -131,7 +131,22 @@
 				
 				
 	    \end{enumerate}
-	
+	\item Laplace Equation\\
+	Consider the equilibrium temperature in a uniform rectangle(Heat EQ)
+	\begin{equation}
+	\left\{
+	\begin{array}{lr}
+	\mu_{xx}(x,y) + \mu_yy(x,y) = 0, \ 0<x<L, \ 0<y<K&\\
+	\mu(0,y) = f_1(y), \ \mu(L, y) = f_2(y),  \ 0<y<K &\\
+	\mu(x,0)=g_1(x), \ \mu(x,K) = g_2(x), \ 0 < x < L\\
+	\end{array}
+	\right.
+	\end{equation}
+	We seperate $\mu = XY$, then\\
+	$X''Y+XY'' = 0$\\
+	$\frac{X''}{X} = -\frac{Y''}{Y}$\\
+	we want to create a SL-BVP problem: we need to determine $\frac{X''}{X} = -\frac{Y''}{Y} = \lambda$ or $-\lambda$\\
+	When we have $f_1(y) = f_2(y) = 0$ we can form SL-BVP on Y and we choose $-\lambda$. On the other hand when we have $g_1(x)= g_2(x) = 0$ we can form SL-BVP on X and we choose $\lambda$
 \end{enumerate}
 \newpage
 \end{multicols}
