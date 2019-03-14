@@ -40,7 +40,7 @@
 		characteristc EQ: $ar^2 + br + c = 0$\\
 		$\Delta > 0, y = C_1e^{r_1x} + C_2e^{r_2x}\\
 		\Delta = 0, y = C_1e^{rx} + C_2xe^{rx}\\
-		\Delta > 0, r = p \pm qi: y = e^{ax}[c_1cos(bx)+c_2sin(bx)]\\$ 
+		\Delta < 0, r = p \pm qi: y = e^{px}[c_1cos(qx)+c_2sin(qx)]\\$ 
 	\end{enumerate}
 
 	\item Fourier Series\\
@@ -98,7 +98,7 @@
 			
 		\end{enumerate}
 	
-	\item Heat and Wave Equation
+	\item Method of Separationg: Heat and Wave Equation
 		\begin{enumerate}
 			\item Heat Equation\\
 				$\mu_t = k\mu_{xx}$, $\mu(x,t) = X(x)T(t)$ (usually k = 1)\\
@@ -180,6 +180,26 @@
 		For simplicity, we transform to:\\
 		$$\mu(x,y) = \sum_{n = 1}^{\infty} (\alpha_n sinh\frac{n \pi x}{K} + \beta_n cosh\frac{n \pi (x-L)}{K}) Y_n$$
 		Then we get $\mu(0, y)$, $\mu(L, y)$ (as long as they fit the other 2 equations) and try to figure out $\alpha_n$, $\beta_n$ using match or SL-BVP. $\mathbf{Note}:$ in bond cond 2, n starts from 0. calc case 0 seperately.
+		
+	\item Method of Eigenfunction Expansion\\
+		Consider\\
+		$PDE: \mu_t = k\mu_{xx}(x,t) + q(x,t), 0<x<L, t > 0\\
+		BCs: \mu(0,t) = 0, \mu(L,t) = 0, t > 0\\
+		IC: \mu(x, 0) = f(x), 0<x<L$
+		\begin{enumerate}
+			\item BCs $\Rightarrow$ Eigenfunction:  $X_n(x), \lambda_n$\\
+			$\Rightarrow \mu(x,t) = \sum_{n = 1}^{\infty}C_n(t)X_n(x)$\\
+			Write $q(x,t) = \sum_{n = 1}^{\infty}q_n(t)X_n(x)$
+			\item PDE $$\Rightarrow \sum_{n = 1}^{\infty}C'_n(t)X_n(x) = \sum_{n = 1}^{\infty}C_n(t)X''_n(x)+\sum_{n = 1}^{\infty}q_n(t)X_n(x)$$
+			$$\Rightarrow \sum_{n = 1}^{\infty}C'_n(t)X_n(x) = -\sum_{n = 1}^{\infty}C_n(t)\lambda_n X_n(x)+\sum_{n = 1}^{\infty}q_n(t)X_n(x)$$
+			$$\Rightarrow \sum_{n = 1}^{\infty}[C'_n(t)+C_n(t)\lambda_n]X_n(x) = \sum_{n = 1}^{\infty}q_n(t)X_n(x)$$
+			$$\Rightarrow \sum_{n = 1}^{\infty}[C'_n(t)+C_n(t)\lambda_n] = \sum_{n = 1}^{\infty}q_n(t)$$
+			Form may vary ($\mu$ is differentiated in other ways)
+			\item IC $\Rightarrow \mu(x,0) = f(x) = \sum_{n=1}^{\infty}C_n(0)X_n(x)$ (SL-BVP)\\
+			either match up or $C_n(0) = \frac{\int_{0}^{L}f(x)X_n(x)dx}{\int_{0}^{L}X_n^2(x)dx}$
+			\item Then we solve functions $C'_n(t)+C_n(t)\lambda_n = q_n(t)$ for each n with initial condition $C_n(0)'s$ and $q_n(0)'s$
+		\end{enumerate}
+		
 		
 \end{enumerate}
 \newpage
