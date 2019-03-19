@@ -12,13 +12,16 @@
 \usepackage{kpfonts}
 \usepackage{multicol}
 \usepackage{amsfonts}
+\usepackage{array}
 \newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
 \newcommand{\Ib}{\mathbf{I}}
 \newcommand{\Pb}{\mathbf{P}}
 \newcommand{\Qb}{\mathbf{Q}}
 \newcommand{\Rb}{\mathbf{R}}
 \newcommand{\Nb}{\mathbf{N}}
+\newcommand{\Fb}{\mathbf{F}}
 \newcommand{\Z}{\mathbf{Z}}
+\newcommand{\Lap}{\mathcal{L}}
 \newcommand{\Zplus}{\mathbf{Z}^+}
 \geometry{left=1cm,right=1cm,top=1cm,bottom=1.5cm}  %设置 上、左、下、右 页边距
 
@@ -199,6 +202,39 @@
 			either match up or $C_n(0) = \frac{\int_{0}^{L}f(x)X_n(x)dx}{\int_{0}^{L}X_n^2(x)dx}$
 			\item Then we solve functions $C'_n(t)+C_n(t)\lambda_n = q_n(t)$ for each n with initial condition $C_n(0)'s$ and $q_n(0)'s$
 		\end{enumerate}
+	
+	\item Laplace Transform\\
+	Def: $\Lap[f(t)] = \int_{0}^{\infty}f(t)e^{-st}dt$\\
+	\begin{equation}
+	Def: H_a(t) = H(t-a) = 
+	\left\{
+	\begin{array}{lr}
+	1, \ t \ge a&\\
+	0, \ t < a\\
+	\end{array}
+	\right.
+	\end{equation}
+	\begin{center}
+		\begin{tabular}{|l l|} \hline
+		$f(t) = \Lap^{-1}F (t)$		& $F (t) = \Lap f(s)$ \\ \hline
+		$f^{(n)}(t)$ (nth derivative)	& $s^n F(s)-s^{n-1}f(0) - \dots - f^{(n-1)}(0)$  \\
+		$H(t-a)f(t-a)$	& $e^{-as}F(s)$ \\
+		$e^{at}f(t)$	& $F(s-a)$ \\
+		$(f*g)(t)$ 		& $F(s)G(s)$ \\
+		1 				& $\frac{1}{s} \ (s > 0)$ \\
+		$t^n$ (n is positive integer) & $\frac{n!}{s^{n+1}} \ (s>0) $\\
+		$e^at$ 			& $ \frac{1}{s-a} \ (s > a)$ \\
+		$sin(at)$ 		& $\frac{a}{s^2+a^2} \ (s > 0)$ \\
+		$cos(at)$		& $\frac{s}{s^2+a^2} \ (s > 0)$ \\
+		$sinh(at)$		& $\frac{a}{s^2-a^2} \ (s > |a|)$ \\
+		$cosh(at)$		& $\frac{s}{s^2-a^2} \ (s > |a|)$ \\
+		$\delta(t-a) \ (a \ge 0)$ & $e^{-as}$ \\
+		$t^ne^{at}$ 	& $\frac{n!}{(s-a)^{n+1}}$ \\
+		$e^{at}sinbt$ 	& $\frac{b}{((s-a)^2 + b^2)}$ \\
+		$e^atcosbt$		& $\frac{s-a}{((s-a)^2 + b^2)}$ \\ \hline
+		\end{tabular}
+	\end{center}
+	
 		
 		
 \end{enumerate}
