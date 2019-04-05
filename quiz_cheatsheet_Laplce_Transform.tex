@@ -1,0 +1,110 @@
+\documentclass[10pt]{article}  
+\usepackage{graphicx}
+\usepackage{geometry}   %设置页边距的宏包
+
+\usepackage{algpseudocode}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{enumerate}
+\usepackage{enumitem}
+\usepackage{framed}
+\usepackage{verbatim}
+\usepackage{microtype}
+\usepackage{kpfonts}
+\usepackage{multicol}
+\usepackage{amsfonts}
+\usepackage{array}
+\newcommand{\overbar}[1]{\mkern 1.5mu\overline{\mkern-1.5mu#1\mkern-1.5mu}\mkern 1.5mu}
+\newcommand{\Ib}{\mathbf{I}}
+\newcommand{\Pb}{\mathbf{P}}
+\newcommand{\Qb}{\mathbf{Q}}
+\newcommand{\Rb}{\mathbf{R}}
+\newcommand{\Nb}{\mathbf{N}}
+\newcommand{\Fb}{\mathbf{F}}
+\newcommand{\Z}{\mathbf{Z}}
+\newcommand{\Lap}{\mathcal{L}}
+\newcommand{\Zplus}{\mathbf{Z}^+}
+\geometry{left=1cm,right=1cm,top=1cm,bottom=1.5cm}  %设置 上、左、下、右 页边距
+
+\begin{document}  
+\begin{multicols}{2}
+	
+\begin{enumerate}
+	\item Basic ODEs
+	\begin{enumerate}
+		\item seperatable: $y'= \frac{F(x)}{G(y)}$\\
+		$\Rightarrow \frac{dy}{dx} = \frac{F(x)}{G(y)} \Rightarrow \int G(y)dy = \int F(x)dx$
+		
+		\item Linear: $y'+p(x)y = q(x)$\\
+		Integrating Factor: $e^{\int p(x)dx}$\\
+		$\Rightarrow (e^{\int p(x)dx}y)' = e^{\int p(x)dx}q(x)\\ \Rightarrow
+		e^{\int p(x)dx}y = \int e^{\int p(x)dx}q(x)dx$
+		
+		\item $ay'' + by' + cy = 0$ (constant coefficient)\\
+		characteristc EQ: $ar^2 + br + c = 0$\\
+		$\Delta > 0, y = C_1e^{r_1x} + C_2e^{r_2x}\\
+		\Delta = 0, y = C_1e^{rx} + C_2xe^{rx}\\
+		\Delta < 0, r = p \pm qi: y = e^{px}[c_1cos(qx)+c_2sin(qx)]$
+		
+		\item $ay'' + by' + cy = f(x)$ \\
+		$y = y_c + y_p$, $y_c$ is solution to homogeneous DIFF EQ\\
+		$f(x)$:a polynomial in x\\
+		$y_p =  x^k$(a polynomial of the same degree), k: $\#$ char eq's zero roots (0,1,2)
+		
+		$f(x) = e^{ax}$(a polynomial in x)\\
+		$y_p =  x^ke^{ax}$(same degree), k: $\#$ char eq's roots $= a$ (0,1,2)
+		
+		$f(x) = e^{ax}cos(bx)$(poly in x) or $e^{ax}sin(bx)(a poly in x)$\\
+		$y_p = x^ke^{ax} [ ($poly in x$)cos(bx) + ($poly in x$)sin(bx) ]$\\
+		k: $\#$ char eq's root = $a \pm bi$ (0,1)
+	\end{enumerate}
+
+
+
+		\item Laplace Transform\\
+		Def: $\Lap[f(t)] = \int_{0}^{\infty}f(t)e^{-st}dt$\\
+		\begin{equation}
+		Def: H_a(t) = H(t-a) = 
+		\left\{
+		\begin{array}{lr}
+			1, \ t \ge a&\\
+			0, \ t < a\\
+			\end{array}
+			\right.
+		\end{equation}
+		Def: $erf(x) = \frac{2}{\pi} \int_{0}^{x} e^{-u^2}du$, $erfc(x) = 1-erf(x)$
+		\begin{center}
+			\begin{tabular}{|l l|} \hline
+				$f(t) = \Lap^{-1}F (t)$		& $F (t) = \Lap f(s)$ \\ \hline
+				$f^{(n)}(t)$ (nth derivative)	& $s^n F(s)-s^{n-1}f(0) - \dots - f^{(n-1)}(0)$  \\
+				$H(t-a)f(t-a)$	& $e^{-as}F(s)$ \\
+				$e^{at}f(t)$	& $F(s-a)$ \\
+				$(f*g)(t)$ 		& $F(s)G(s)$ \\
+				1 				& $\frac{1}{s} \ (s > 0)$ \\
+				$t^n$ (n is positive integer) & $\frac{n!}{s^{n+1}} \ (s>0) $\\
+				$e^{at}$ 			& $ \frac{1}{s-a} \ (s > a)$ \\
+				$sin(at)$ 		& $\frac{a}{s^2+a^2} \ (s > 0)$ \\
+				$cos(at)$		& $\frac{s}{s^2+a^2} \ (s > 0)$ \\
+				$sinh(at)$		& $\frac{a}{s^2-a^2} \ (s > |a|)$ \\
+				$cosh(at)$		& $\frac{s}{s^2-a^2} \ (s > |a|)$ \\
+				$\delta(t-a) \ (a \ge 0)$ & $e^{-as}$ \\
+				$t^ne^{at}$ 	& $\frac{n!}{(s-a)^{n+1}}$ \\
+				$e^{at}sinbt$ 	& $\frac{b}{((s-a)^2 + b^2)}$ \\
+				$e^atcosbt$		& $\frac{s-a}{((s-a)^2 + b^2)}$ \\
+				$erfc(\frac{a}{2 \sqrt{t} })$ & $\frac{1}{s} e^{-a \sqrt{s} }$ \\ \hline
+			\end{tabular}
+		\end{center}
+		Example:\\
+		$\mu_{tt}(x,t) = \mu_{xx}(x,t) + 1$, $\mu(x,0) = \mu_t(x,0) = -1, \mu(0,t) = t$\\
+		$\Lap{\mu_{tt}} = s^2U-s\mu(x,0) - \mu_t{x,0} = s^2U + 1$\\
+		$\Lap{\mu_{xx} + 1} = U_{xx} + \frac{1}{s}$\\
+		$\Rightarrow U'' - s^2U = 1 - \frac{1}{s}$ (x is variable, s is scalar)\\
+		$U_c = k_1e^{sx} + k_2e^{-sx}$, $k_1 = 0$\\
+		$U_p = \frac{1 - \frac{1}{s}}{-s^2} = \frac{1}{s^3} - \frac{1}{s^2}$\\
+		$\Lap{\mu(0,t)} = \Lap{t} = \frac{1}{s} = U(0,s)$\\
+		$\Rightarrow k_2 + \frac{1}{s^3} - \frac{1}{s^2} = \frac{1}{s^2}$\\
+		$\Rightarrow U = (\frac{2}{s^2} - \frac{1}{s^3})e^{-sx} - \frac{1}{s^2} + \frac{1}{s^3}$\\
+		$\mu = \Lap^{-1}(U) = H(t-x)[2(t-x)-\frac{1}{2}(t-x)^2] - t + \frac{1}{2}t^2$ 
+		
+	\end{enumerate}
+\end{multicols}
+\end{document}

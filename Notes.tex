@@ -226,6 +226,7 @@
 	\end{array}
 	\right.
 	\end{equation}
+	Def: $erf(x) = \frac{2}{\pi} \int_{0}^{x} e^{-u^2}du$, $erfc(x) = 1-erf(x)$
 	\begin{center}
 		\begin{tabular}{|l l|} \hline
 		$f(t) = \Lap^{-1}F (t)$		& $F (t) = \Lap f(s)$ \\ \hline
@@ -243,10 +244,21 @@
 		$\delta(t-a) \ (a \ge 0)$ & $e^{-as}$ \\
 		$t^ne^{at}$ 	& $\frac{n!}{(s-a)^{n+1}}$ \\
 		$e^{at}sinbt$ 	& $\frac{b}{((s-a)^2 + b^2)}$ \\
-		$e^atcosbt$		& $\frac{s-a}{((s-a)^2 + b^2)}$ \\ \hline
+		$e^atcosbt$		& $\frac{s-a}{((s-a)^2 + b^2)}$ \\
+		$erfc(\frac{a}{2 \sqrt{t} })$ & $\frac{1}{s} e^{-a \sqrt{s} }$ \\ \hline
 		\end{tabular}
 	\end{center}
-	
+	Example:\\
+	$\mu_{tt}(x,t) = \mu_{xx}(x,t) + 1$, $\mu(x,0) = \mu_t(x,0) = -1, \mu(0,t) = t$\\
+	$\Lap{\mu_{tt}} = s^2U-s\mu(x,0) - \mu_t{x,0} = s^2U + 1$\\
+	$\Lap{\mu_{xx} + 1} = U_{xx} + \frac{1}{s}$\\
+	$\Rightarrow U'' - s^2U = 1 - \frac{1}{s}$ (x is variable, s is scalar)\\
+	$U_c = k_1e^{sx} + k_2e^{-sx}$, $k_1 = 0$\\
+	$U_p = \frac{1 - \frac{1}{s}}{-s^2} = \frac{1}{s^3} - \frac{1}{s^2}$\\
+	$\Lap{\mu(0,t)} = \Lap{t} = \frac{1}{s} = U(0,s)$\\
+	$\Rightarrow k_2 + \frac{1}{s^3} - \frac{1}{s^2} = \frac{1}{s^2}$\\
+	$\Rightarrow U = (\frac{2}{s^2} - \frac{1}{s^3})e^{-sx} - \frac{1}{s^2} + \frac{1}{s^3}$\\
+	$\mu = \Lap^{-1}(U) = H(t-x)[2(t-x)-\frac{1}{2}(t-x)^2] - t + \frac{1}{2}t^2$ 
 		
 		
 \end{enumerate}
