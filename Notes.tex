@@ -3,6 +3,7 @@
 \usepackage{geometry}   %设置页边距的宏包
 
 \usepackage{algpseudocode}
+\usepackage{comment}
 \usepackage{amsmath, amssymb, amsthm}
 \usepackage{enumerate}
 \usepackage{enumitem}
@@ -56,6 +57,21 @@
 		$f(x) = e^{ax}cos(bx)$(poly in x) or $e^{ax}sin(bx)(a poly in x)$\\
 		$y_p = x^ke^{ax} [ ($poly in x$)cos(bx) + ($poly in x$)sin(bx) ]$\\
 		k: $\#$ char eq's root = $a \pm bi$ (0,1)
+		
+		\item Second Order Cauchy-Euler Equation\\
+		homogeneous: $ax^2y'' + bxy' + cy = 0$\\
+		characteristic Equation: $am^2 + (b-a)m + c = 0$
+		\begin{enumerate}
+			\item Two different real roots:\\
+			$y = c_1x^{m_1} + c_2x^{m_2}$
+			\item Same real root:\\
+			$y = c_1x^m + c_2x^mlnx$
+			\item complex roots:\\
+			$m_1 = \alpha + i \beta, m_2 = \alpha - i \beta$\\
+			$y = x^{\alpha}[c_1cos(\beta lnx) + c_2sin(\beta lnx)]$
+		\end{enumerate}
+		nonhomogeneous: $ax^2y'' + bxy' + cy = f(x)$\\
+		$y = y_c + y_p$, similar to the above case.  
 	\end{enumerate}
 
 	\item Fourier Series\\
@@ -74,23 +90,31 @@
 		F.S. convergence to the "periodic extension" of F(x) whever F(x) is continous and to the average of $\frac{f(x^+)+f(x^-)}{2}$ at every point.
 		
 		\item F.S.S and F.C.S of $F(x)$ on $[0,L]$:\\
+		Suppose F(x) is even, then $b_n = 0$, for all n\\
 		F.C.S = $\frac{a_0}{2} + \sum_{n=1}^{\infty}a_ncos\frac{n\pi x}{L},
 		a_n = \frac{2}{L}\int_{0}^{L}F(x)cos(\frac{n\pi x}{L})dx$\\
+		Suppose F(x) is odd, then $a_n = 0$, for all n\\
 		F.S.S = $\sum_{n=1}^{\infty}b_nsin\frac{n\pi x}{L},
-		a_n = \frac{2}{L}\int_{0}^{L}F(x)cos(\frac{n\pi x}{L})dx$\\
-		F.C.S $\rightarrow$ even extension, F.S.S $\rightarrow$ odd extension
+		b_n = \frac{2}{L}\int_{0}^{L}F(x)sin(\frac{n\pi x}{L})dx$\\
+		F.C.S $\rightarrow$ even extension, F.S.S $\rightarrow$ odd extension\\
 	\end{enumerate}
 
 	\item Sturm-Liouville Problem
 		\begin{enumerate}
+			\item Hyperbolic sin and cos\\
+		    $coshx = \frac{e^x + e^{-x}}{2}$, $sinhx = \frac{e^x - e^{-x}}{2}$\\
+		    $(coshax)' = =asinhax$, $(coshax)'' = a^2coshax$\\
+		    $(sinhax)' = =acoshax$, $(sinhax)'' = a^2sinhax$\\
+		    $sinh(\alpha - \beta) = sinh\alpha cosh\beta - cosh\alpha sinh\beta$\\
+		    $cosh(\alpha - \beta) = cosh\alpha cosh\beta - sinh\alpha sinh\beta$
 			\item Basic Examples of S-L BVP\\
 			$f'' + \lambda f = 0, 0\le x \le L$ and Boundary conditions\\
 			Def: value $\lambda$ for which the equation with the given boundary ends: has non-trival solution is called eigen value, the corresponding solution is called eigeon functions of the given S-L BVP.\\
-			First, general solutions:\\
+			General solutions:\\
 			$\lambda = 0, f(x) = \alpha x + \beta\\
 			\lambda > 0, f(x) = C_1 cos(\sqrt{\lambda}x) + C_2 sin(\sqrt{\lambda}x)\\
 			\lambda < 0, f(x) = C_1 cosh(ax) + C_2 sinh(ax), a^2 = -\lambda, a > 0$
-			Then, impose the boundary in each case.
+			Impose the boundary in each case.
 			\begin{enumerate}
 				\item Boundary COND: $f(0) = 0, f(L) = 0$\\
 				e-values: $\lambda_n = \frac{n^2\pi^2}{L^2}, n = 1,2,3$\\
@@ -110,13 +134,15 @@
 				Boundary: $k_1f(a) + k_2f'(a) = 0, k_3f(b) + k_4f'(b) = 0$\\
 				$$g(x) \sim \sum_{n=1}^{\infty}a_n f_n(x) $$
 				$$a_n = \frac{\int_{a}^{b}g(x)f_n(x)\sigma (x)dx}{\int_{a}^{b}\sigma(x) f_n^2(x)dx}$$
+				ususlly $\sigma(x) = 1$
 			
 		\end{enumerate}
 	
-	\item Method of Separationg: Heat and Wave Equation
+	\item Method of Separationg: Heat and Wave Equation 
 		\begin{enumerate}
 			\item Heat Equation\\
-				$\mu_t = k\mu_{xx}$, $\mu(x,t) = X(x)T(t)$ (usually k = 1)\\
+				$\mu_t = k\mu_{xx}$\\
+				$\mu(x,t) = X(x)T(t)$ (usually k = 1)\\
 				Seperation$\rightarrow X(x)T'(t) = kX''(x)T(t)$\\
 				Let$\frac{T'}{kT} = \frac{kX''}{x} = -\lambda$\\
 				We get $X'' + \lambda x = 0$, $T' + k\lambda T = 0$\\
@@ -128,21 +154,33 @@
 				$\lambda_n = (\frac{n \pi}{L})^2$, $f_n \sim sin(\frac{n \pi x}{L})$\\
 				$\mu (x,0) = g(x) = \sum_{n = 1}^{\infty}c_n sin(\frac{n\pi x}{L})$\\
 				Fouries formal solution: $\mu (x,t) = \sum_{n = 1}^{\infty}c_nsin(\frac{n \pi x}{L})e^{-\frac{n^2\pi^2}{L^2}t}$ \\
-				$\mathbf{note}:$ in bond cond 2, n starts from 0. calculate case 0 seperately.
+				e.g. bond cond 2:\\
+				$\lambda_0 = 0$, $X_0(x) = 1/2$\\
+				$\lambda_n = (\frac{n \pi}{L})^2$, $f_n \sim cos(\frac{n \pi x}{L})$\\
+				$\mu (x,0) = g(x) = \frac{1}{2} c_0 + \sum_{n = 1}^{\infty}c_n cos(\frac{n\pi x}{L})$\\
+				$g(x) = \frac{1}{2} c_0 \Rightarrow c_0 = \frac{\int_{0}^{L} \frac{1}{2} g(x)dx }{\int_{0}^{L} (\frac{1}{2})^2dx}$\\
+				$g(x) = \sum_{n = 1}^{\infty}c_n cos(\frac{n\pi x}{L})\Rightarrow c_n = \frac{\int_{0}^{L} cos(\frac{n\pi x}{L}) g(x)dx }{\int_{0}^{L} (cos(\frac{n\pi x}{L})^2dx}$\\
+				Solution: $\mu (x,t) = \frac{1}{2} a_0 + \sum_{n = 1}^{\infty}c_n cos(\frac{n \pi x}{L})e^{-\frac{n^2\pi^2}{L^2}t}$\\
+				If the bound. cond. not in the 4 SLBVP:\\
+				Do the SL-BVP manually and find e-value and e-function.\\
+				write $\lambda_n = (\frac{\zeta_n}{L})$, $X_n = sin/cos \frac{\zeta_n}{L}$
 			\item Wave Equation\\
-				$\mu_{tt} = C^2\mu_{xx}, \mu(x,t) = X(x)T(t)$, usually $C = 1$\\
+				$\mu_{tt} = C^2\mu_{xx}\\
+				\mu(x,t) = X(x)T(t)$, usually $C = 1$\\
 				$\mu (0,t) = 0$, $\mu (L,t)=0$\\
 			 	Seperation $\rightarrow XT'' = C^2X''T$\\
 				Let $\frac{T''}{c^2T} = \frac{X''}{x} = -\lambda$\\
 				We get $X'' + \lambda x = 0$, $T'' =  -\lambda c^2T$\\
-				$\mu (x,t) = \sum_{n = 1}^{\infty}(b_{1,n}cos\frac{n\pi ct}{L} + b_{2,n}sin\frac{n\pi c t}{L})sin\frac{n\pi x}{L}$
+				$T_n(t) = b_{1,n}cos\frac{n\pi ct}{L} + b_{2,n}sin\frac{n\pi ct}{L}$, $X_n = sin\frac{n\pi cx}{L}$ ($X_n$ from SL-BVP problem)\\
+				When c = 1:\\
+				$\mu (x,t) = X_nT_n = \sum_{n = 1}^{\infty}(b_{1,n}cos\frac{n\pi ct}{L} + b_{2,n}sin\frac{n\pi c t}{L})sin\frac{n\pi x}{L}$
 				\begin{enumerate}
 					\item $\mu(x,0) = f(x)$\\
 					$f(x) = \sum_{n = 1}^{\infty}b_{1,n}sin\frac{n\pi x}{L}$\\
-					$b_{1,n} = \frac{\int_{0}^{L}f(x)sin\frac{n\pi x}{L}dx}{\int_{0}^{L}sin^2\frac{n\pi x}{L}}$\\
+					$b_{1,n} = \frac{\int_{0}^{L}f(x)sin\frac{n\pi x}{L}dx}{\int_{0}^{L}sin^2\frac{n\pi x}{L}dx}$\\
 					\item $\mu_t(x,0) = g(x)$\\
 					$g(x) = \sum_{n = 1}^{\infty} \frac{n\pi c}{L}b_{2,n}sin\frac{n\pi x}{L}$\\
-					$\frac{n\pi c}{L}b_{2,n} = \frac{\int_{0}^{L}g(x)sin\frac{n\pi x}{L}dx}{\int_{0}^{L}sin^2\frac{n\pi x}{L}}$
+					$\frac{n\pi c}{L}b_{2,n} = \frac{\int_{0}^{L}g(x)sin\frac{n\pi x}{L}dx}{\int_{0}^{L}sin^2\frac{n\pi x}{L}dx}$
 				\end{enumerate}
 			\item d'Alembert's solution to the Wave Equation\\
 				Given $\mu (x,0) = F(x)$,$\mu_t (x,0) = 0$ we want to get $\mu(x,t)$\\
@@ -154,7 +192,7 @@
 		\begin{equation}
 			\left\{
 			\begin{array}{lr}
-			\mu_{xx}(x,y) + \mu_yy(x,y) = 0, \ 0<x<L, \ 0<y<K&\\
+			\mu_{xx}(x,y) + \mu_{yy}(x,y) = 0, \ 0<x<L, \ 0<y<K&\\
 			\mu(0,y) = f_1(y), \ \mu(L, y) = f_2(y),  \ 0<y<K &\\
 			\mu(x,0)=g_1(x), \ \mu(x,K) = g_2(x), \ 0 < x < L\\
 			\end{array}
@@ -166,8 +204,9 @@
 		$\frac{X''}{X} = -\frac{Y''}{Y}$\\
 		we want to create a SL-BVP problem:\\
 		Determine $\frac{X''}{X} = -\frac{Y''}{Y} = \lambda$ or $-\lambda$\\
-		When $f_1(y) = f_2(y) = 0$ we can form SL-BVP on Y and we choose $-\lambda$. Similarly, when $g_1(x)= g_2(x) = 0$ we can form SL-BVP on X and we choose $\lambda$\\
-		$\mathbf{Case1}$: $-\lambda$:($X(0) \ or \ X'(0) = 0, X(L) \ or \ X'(L) = 0$)\\
+		When $f_1(y) = f_2(y) = 0$ or $X(0) = X(L) = 0$ we can form SL-BVP on Y and we choose $-\lambda$.\\
+		Similarly, when $g_1(x)= g_2(x) = 0$ or $Y(0) = Y(K) = 0$ we can form SL-BVP on X and we choose $\lambda$\\
+		when we choose $-\lambda$: ($X(0) \ or \ X'(0) = 0, X(L) \ or \ X'(L) = 0$)\\
 		\begin{equation}
 		\left\{
 		\begin{array}{lr}
@@ -176,25 +215,43 @@
 		\end{array}
 		\right.
 		\end{equation}
-		Get $\lambda_n$ and $X_n$ from SL-BVP.
+		$\Rightarrow$ find out $\lambda_n$ and $X_n$ Then:
+		$$ Y''_n - \lambda_n Y_n = 0, 0 < y < K$$
+		$$ Y_n = \alpha_n sinh\frac{n \pi y}{L} + \beta_n cosh\frac{n \pi y}{L} $$
 		$$\mu(x,y) = \sum_{n = 1}^{\infty} (\alpha_n sinh\frac{n \pi y}{L} + \beta_n cosh\frac{n \pi y}{L}) X_n$$
-		For simplicity, we transform to:\\
-		$$\mu(x,y) = \sum_{n = 1}^{\infty} (\alpha_n sinh\frac{n \pi y}{L} + \beta_n sinh\frac{n \pi (y-K)}{L}) X_n$$
-		Then we get $\mu(x,0)$, $\mu(x,K)$ (as long as they fit the other 2 equations) and try to figure out $\alpha_n$, $\beta_n$ using match or SL-BVP. $\mathbf{Note}:$ in bond cond 2, n starts from 0. calc case 0 seperately.\\
-		$\mathbf{Case2}$: $\lambda$:($Y(0) \ or \ Y'(0) = 0, Y(K) \ or \ Y'(K) = 0$)\\
-		\begin{equation}
-		\left\{
-		\begin{array}{lr}
-		Y''+\lambda X = 0, \ \ (SL-BVP)&\\
-		\mu(0, y) = g_1(y), \mu(L, y) = g_2(x)\\
-		\end{array}
-		\right.
-		\end{equation}
-		Get $\lambda_n$ and $Y_n$ from SL-BVP.
-		$$\mu(x,y) = \sum_{n = 1}^{\infty} (\alpha_n sinh\frac{n \pi x}{K} + \beta_n cosh\frac{n \pi x}{K}) Y_n$$
-		For simplicity, we transform to:\\
-		$$\mu(x,y) = \sum_{n = 1}^{\infty} (\alpha_n sinh\frac{n \pi x}{K} + \beta_n cosh\frac{n \pi (x-L)}{K}) Y_n$$
-		Then we get $\mu(0, y)$, $\mu(L, y)$ (as long as they fit the other 2 equations) and try to figure out $\alpha_n$, $\beta_n$ using match or SL-BVP. $\mathbf{Note}:$ in bond cond 2, n starts from 0. calc case 0 seperately.
+		For simplicity, we transform to:
+		\begin{enumerate}
+			\item $\mu(x,0) = g_1(x)$, $\mu(x,K) = g_2(x)$\\
+			$Y_n = \alpha_n sinh\frac{n \pi (y-K)}{L} + \beta_n sinh\frac{n \pi y}{L}$ 
+			\item $\mu_y(x,0) = g_1(x)$, $\mu_y(x,K) = g_2(x)$\\
+			$Y_n = \alpha_n cosh\frac{n \pi (y-K)}{L} + \beta_n cosh\frac{n \pi y}{L}$ 
+			\item $\mu(x,0) = g_1(x)$, $\mu_y(x,K) = g_2(x)$\\
+			$Y_n = \alpha_n cosh\frac{n \pi (y-K)}{L} + \beta_n cosh\frac{n \pi y}{L}$ 
+			\item $\mu_y(x,0) = g_1(x)$, $\mu(x,K) = g_2(x)$\\
+			$Y_n = \alpha_n cosh\frac{n \pi y}{L} + \beta_n sinh\frac{n \pi (y-K)}{L}$                                                                       
+		\end{enumerate}
+		Then we get $\mu(x,0)$, $\mu(x,K)$ (as long as they fit the other 2 equations) and try to figure out $\alpha_n$, $\beta_n$ using match or SL-BVP. \\
+		$\mathbf{Note}:$ in bond cond 2, n starts from 0. calc case 0 seperately: $\lambda_0 = 0$, $X_0 = 1 \Rightarrow Y_0'' - 0Y_0 = 0 \Rightarrow Y_0 = ay + b$\\
+		\begin{comment}
+			$\mathbf{Case2}$: $\lambda$:($Y(0) \ or \ Y'(0) = 0, Y(K) \ or \ Y'(K) = 0$)\\
+			\begin{equation}
+			\left\{
+			\begin{array}{lr}
+			Y''+\lambda X = 0, \ \ (SL-BVP)&\\
+			\mu(0, y) = g_1(y), \mu(L, y) = g_2(x)\\
+			\end{array}
+			\right.
+			\end{equation}
+			$\Rightarrow$ find out $\lambda_n$ and $Y_n$ Then:
+			$$ X''_n - \lambda_n X_n = 0, 0 < X < L$$
+			$$ X_n = \alpha_n sinh\frac{n \pi x}{L} + \beta_n cosh\frac{n \pi x}{L} $$
+			$$\mu(x,y) = \sum_{n = 1}^{\infty} (\alpha_n sinh\frac{n \pi x}{K} + \beta_n cosh\frac{n \pi x}{K}) Y_n$$
+			For simplicity, we transform to:\\
+			$$\mu(x,y) = \sum_{n = 1}^{\infty} (\alpha_n sinh\frac{n \pi x}{K} + \beta_n cosh\frac{n \pi (x-L)}{K}) Y_n$$
+			Then we get $\mu(0, y)$, $\mu(L, y)$ (as long as they fit the other 2 equations) and try to figure out $\alpha_n$, $\beta_n$ using match or SL-BVP. \\
+			$\mathbf{Note}:$ in bond cond 2, n starts from 0. calc case 0 seperately: $\lambda_0 = 0$, $Y_0 = 1 \Rightarrow X_0'' - 0X_0 = 0 \Rightarrow X_0 = ax + b$\\
+		\end{comment}
+		
 		
 	\item Method of Eigenfunction Expansion\\
 		Consider\\
@@ -205,7 +262,7 @@
 			\item BCs $\Rightarrow$ Eigenfunction:  $X_n(x), \lambda_n$\\
 			$\Rightarrow \mu(x,t) = \sum_{n = 1}^{\infty}C_n(t)X_n(x)$\\
 			Write $q(x,t) = \sum_{n = 1}^{\infty}q_n(t)X_n(x)$
-			\item PDE $$\Rightarrow \sum_{n = 1}^{\infty}C'_n(t)X_n(x) = \sum_{n = 1}^{\infty}C_n(t)X''_n(x)+\sum_{n = 1}^{\infty}q_n(t)X_n(x)$$
+			\item PDE: $X_n'' + \lambda_n X_n = 0$ $$\Rightarrow \sum_{n = 1}^{\infty}C'_n(t)X_n(x) = \sum_{n = 1}^{\infty}C_n(t)X''_n(x)+\sum_{n = 1}^{\infty}q_n(t)X_n(x)$$
 			$$\Rightarrow \sum_{n = 1}^{\infty}C'_n(t)X_n(x) = -\sum_{n = 1}^{\infty}C_n(t)\lambda_n X_n(x)+\sum_{n = 1}^{\infty}q_n(t)X_n(x)$$
 			$$\Rightarrow \sum_{n = 1}^{\infty}[C'_n(t)+C_n(t)\lambda_n]X_n(x) = \sum_{n = 1}^{\infty}q_n(t)X_n(x)$$
 			$$\Rightarrow \sum_{n = 1}^{\infty}[C'_n(t)+C_n(t)\lambda_n] = \sum_{n = 1}^{\infty}q_n(t)$$
